@@ -864,12 +864,12 @@ h2.section-title {
    МОБИЛЬНАЯ ВЕРСИЯ — фикс шапки, волны и картинки
    ========================================================== */
 
-/* Планшеты (768–1024px) */
-@media (max-width: 1024px) {
+/* Планшеты (от 768px до 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
   .hero {
     min-height: 480px;
     padding: 70px 0 0;
-    align-items: flex-start; /* текст прижимаем к верху */
+    align-items: flex-start;
   }
 
   .hero__bg {
@@ -914,7 +914,7 @@ h2.section-title {
 }
 
 /* Телефоны (до 768px) */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .hero {
     min-height: 420px;
     padding: 60px 0 0;
@@ -977,7 +977,6 @@ h2.section-title {
     font-size: 15px;
   }
 
-  /* Уменьшаем волну */
   .crust-divider {
     height: 32px;
   }
@@ -988,7 +987,7 @@ h2.section-title {
 }
 
 /* Маленькие телефоны (до 480px) */
-@media (max-width: 480px) {
+@media (max-width: 479px) {
   .hero {
     min-height: 340px;
     padding: 50px 0 0;
@@ -1044,7 +1043,7 @@ h2.section-title {
 }
 
 /* Очень маленькие (до 360px) */
-@media (max-width: 360px) {
+@media (max-width: 359px) {
   .hero {
     min-height: 300px;
     padding: 44px 0 0;
@@ -1079,4 +1078,4 @@ h2.section-title {
   .crust-divider svg {
     height: 18px;
   }
-}В
+}
