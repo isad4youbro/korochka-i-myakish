@@ -859,3 +859,224 @@ h2.section-title {
     padding: 46px 0 120px;
   }
 }
+
+/* ==========================================================
+   МОБИЛЬНАЯ ВЕРСИЯ — фикс шапки, волны и картинки
+   ========================================================== */
+
+/* Планшеты (768–1024px) */
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 480px;
+    padding: 70px 0 0;
+    align-items: flex-start; /* текст прижимаем к верху */
+  }
+
+  .hero__bg {
+    background-position: center 50% !important;
+    background-size: cover !important;
+  }
+
+  .hero__content {
+    padding: 40px 0 120px;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .hero__title {
+    font-size: clamp(32px, 5vw, 44px);
+  }
+
+  .hero__subtitle {
+    font-size: 17px;
+    margin: 14px auto 0;
+    max-width: 90%;
+  }
+
+  .hero__actions {
+    justify-content: center;
+    margin-top: 28px;
+  }
+
+  .hero__actions .btn {
+    flex: 0 1 auto;
+    min-width: 160px;
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+
+  .hero__rating {
+    justify-content: center;
+    margin-top: 24px;
+    font-size: 14px;
+  }
+}
+
+/* Телефоны (до 768px) */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 420px;
+    padding: 60px 0 0;
+    align-items: flex-start;
+  }
+
+  .hero__bg {
+    background-position: center 45% !important;
+    background-size: cover !important;
+    background-image: linear-gradient(180deg, rgba(17, 12, 8, 0.6) 0%, rgba(17, 12, 8, 0.85) 60%, var(--bg) 100%),
+      url("../assets/img/hero-storefront.jpg") !important;
+  }
+
+  .hero__content {
+    padding: 24px 0 90px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero__title {
+    font-size: clamp(26px, 6vw, 34px);
+    line-height: 1.1;
+  }
+
+  .hero__subtitle {
+    font-size: 15px;
+    margin: 10px auto 0;
+    max-width: 100%;
+  }
+
+  .hero__actions {
+    gap: 12px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+  }
+
+  .hero__actions .btn {
+    flex: none;
+    width: 100%;
+    max-width: 300px;
+    font-size: 15px;
+    padding: 16px 20px;
+    border-radius: 12px;
+  }
+
+  .hero__rating {
+    font-size: 13px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .hero__rating .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .hero__rating strong {
+    font-size: 15px;
+  }
+
+  /* Уменьшаем волну */
+  .crust-divider {
+    height: 32px;
+  }
+
+  .crust-divider svg {
+    height: 32px;
+  }
+}
+
+/* Маленькие телефоны (до 480px) */
+@media (max-width: 480px) {
+  .hero {
+    min-height: 340px;
+    padding: 50px 0 0;
+  }
+
+  .hero__bg {
+    background-position: center 40% !important;
+    background-image: linear-gradient(180deg, rgba(17, 12, 8, 0.65) 0%, rgba(17, 12, 8, 0.9) 65%, var(--bg) 100%),
+      url("../assets/img/hero-storefront.jpg") !important;
+  }
+
+  .hero__content {
+    padding: 16px 0 60px;
+  }
+
+  .hero__title {
+    font-size: clamp(22px, 5.5vw, 28px);
+  }
+
+  .hero__subtitle {
+    font-size: 14px;
+    margin: 8px auto 0;
+  }
+
+  .hero__actions .btn {
+    max-width: 240px;
+    font-size: 14px;
+    padding: 14px 16px;
+    border-radius: 10px;
+  }
+
+  .hero__rating {
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .hero__rating .icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hero__rating strong {
+    font-size: 14px;
+  }
+
+  .crust-divider {
+    height: 24px;
+  }
+
+  .crust-divider svg {
+    height: 24px;
+  }
+}
+
+/* Очень маленькие (до 360px) */
+@media (max-width: 360px) {
+  .hero {
+    min-height: 300px;
+    padding: 44px 0 0;
+  }
+
+  .hero__content {
+    padding: 12px 0 44px;
+  }
+
+  .hero__title {
+    font-size: 20px;
+  }
+
+  .hero__subtitle {
+    font-size: 13px;
+  }
+
+  .hero__actions .btn {
+    max-width: 200px;
+    font-size: 13px;
+    padding: 12px 14px;
+  }
+
+  .hero__rating {
+    font-size: 11px;
+  }
+
+  .crust-divider {
+    height: 18px;
+  }
+
+  .crust-divider svg {
+    height: 18px;
+  }
+}В
