@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Корочка и Мякиш — пекарня и кофейня в Шушарах</title>
+  <meta name="description" content="«Корочка и Мякиш» — кофейня и пекарня в посёлке Шушары. Кофе на хорошем зерне, свежая выпечка каждый день, десерты, чай и какао. Школьная улица, 6, корп. 2." />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon-180.png" />
+
+  <meta property="og:title" content="Корочка и Мякиш — пекарня и кофейня в Шушарах" />
+  <meta property="og:description" content="Кофе на хорошем зерне и свежая выпечка каждый день. Школьная улица, 6, корп. 2, посёлок Шушары." />
+  <meta property="og:image" content="assets/img/hero-storefront.jpg" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,640&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <meta name="theme-color" content="#17110c" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!--
+    Структурированные данные для поисковиков (Google, Яндекс) — помогают
+    сайту и карточке организации показываться богаче в выдаче (рейтинг,
+    адрес, телефон прямо в результатах поиска).
+    Если поменяете адрес/телефон/название — поправьте и здесь тоже,
+    а также "url" и "image" на реальные адреса после публикации сайта
+    (см. README.md, раздел «SEO и превью для соцсетей»).
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Корочка и Мякиш",
+    "servesCuisine": "Кофе, выпечка",
+    "priceRange": "100–300 ₽",
+    "telephone": "+7-931-969-69-06",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Школьная улица, 6, корп. 2",
+      "addressLocality": "посёлок Шушары",
+      "addressRegion": "Санкт-Петербург",
+      "addressCountry": "RU"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "58",
+      "bestRating": "5"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="visually-hidden skip-link" href="#main">Перейти к содержимому</a>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="#top">
+        <img class="brand__mark" src="assets/img/logo.png" alt="" />
+        <span class="brand__name">
+          <span data-brand-name>Корочка и Мякиш</span>
+          <small>Пекарня · Кофейня</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Основная навигация">
+        <a href="#about">О нас</a>
+        <a href="#menu">Меню</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contacts">Контакты</a>
+        <a class="btn btn--primary" data-phone-href href="tel:+79319696906">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h3.5l1.5 4-2 1.3a11 11 0 0 0 5.7 5.7l1.3-2 4 1.5V18a2 2 0 0 1-2.2 2A16 16 0 0 1 3 5.2 2 2 0 0 1 5 4Z"/></svg>
+          <span data-phone-display>+7 (931) 969-69-06</span>
+        </a>
+      </nav>
+
+      <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="top">
+      <div class="hero__bg" role="img" aria-label="Фасад кофейни «Корочка и Мякиш» с вывеской «Пекарня»"></div>
+
+      <div class="container hero__content">
+        <h1 class="hero__title" data-hero-title>Снаружи — хрустит. Внутри — мягкое.</h1>
+        <p class="hero__subtitle" data-hero-subtitle>Кофейня-пекарня в Шушарах.</p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#menu">Смотреть меню</a>
+          <a class="btn btn--ghost" data-route-link href="https://yandex.ru/maps/?rtext=~Санкт-Петербург,%20Пушкинский%20район,%20посёлок%20Шушары,%20Школьная%20улица,%206,%20корп.%202" target="_blank" rel="noopener">Проложить маршрут</a>
+        </div>
+
+        <div class="hero__rating" data-hero-rating>
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.3 14.6 9l6.2.6-4.7 4.1 1.4 6.1L12 16.8 6.5 19.8l1.4-6.1-4.7-4.1L9.4 9 12 3.3Z"/></svg>
+          <span><strong>4.8</strong> · 83 оценки на Яндекс Картах</span>
+        </div>
+      </div>
+
+      <span class="crust-divider" aria-hidden="true">
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+          <path style="fill:var(--bg)" d="M 0,60 L 0,10 C 9.2,9.4 36.8,5.1 55.0,6.3 C 73.2,7.5 90.8,17.6 109.0,17.3 C 127.2,17.0 145.8,5.0 164.0,4.6 C 182.2,4.2 199.8,13.7 218.0,14.8 C 236.2,15.9 254.8,12.8 273.0,11.0 C 291.2,9.2 308.8,3.8 327.0,4.3 C 345.2,4.8 363.8,14.3 382.0,14.2 C 400.2,14.1 417.8,4.1 436.0,3.8 C 454.2,3.5 472.8,12.4 491.0,12.5 C 509.2,12.6 526.8,5.8 545.0,4.5 C 563.2,3.2 581.7,3.7 600.0,5.0 C 618.3,6.3 636.8,9.6 655.0,12.3 C 673.2,15.0 690.8,22.3 709.0,21.2 C 727.2,20.1 745.8,7.9 764.0,5.7 C 782.2,3.5 799.8,6.0 818.0,7.9 C 836.2,9.8 854.8,14.2 873.0,16.8 C 891.2,19.4 908.8,24.0 927.0,23.8 C 945.2,23.6 963.8,17.7 982.0,15.7 C 1000.2,13.7 1017.8,10.2 1036.0,11.7 C 1054.2,13.2 1072.8,25.8 1091.0,24.5 C 1109.2,23.2 1126.8,6.4 1145.0,4.0 C 1163.2,1.6 1190.8,9.0 1200.0,10.0 L 1200,60 Z"/>
+          <path style="fill:none;stroke:var(--crust);stroke-width:1.6;opacity:0.55" d="M 0,10 C 9.2,9.4 36.8,5.1 55.0,6.3 C 73.2,7.5 90.8,17.6 109.0,17.3 C 127.2,17.0 145.8,5.0 164.0,4.6 C 182.2,4.2 199.8,13.7 218.0,14.8 C 236.2,15.9 254.8,12.8 273.0,11.0 C 291.2,9.2 308.8,3.8 327.0,4.3 C 345.2,4.8 363.8,14.3 382.0,14.2 C 400.2,14.1 417.8,4.1 436.0,3.8 C 454.2,3.5 472.8,12.4 491.0,12.5 C 509.2,12.6 526.8,5.8 545.0,4.5 C 563.2,3.2 581.7,3.7 600.0,5.0 C 618.3,6.3 636.8,9.6 655.0,12.3 C 673.2,15.0 690.8,22.3 709.0,21.2 C 727.2,20.1 745.8,7.9 764.0,5.7 C 782.2,3.5 799.8,6.0 818.0,7.9 C 836.2,9.8 854.8,14.2 873.0,16.8 C 891.2,19.4 908.8,24.0 927.0,23.8 C 945.2,23.6 963.8,17.7 982.0,15.7 C 1000.2,13.7 1017.8,10.2 1036.0,11.7 C 1054.2,13.2 1072.8,25.8 1091.0,24.5 C 1109.2,23.2 1126.8,6.4 1145.0,4.0 C 1163.2,1.6 1190.8,9.0 1200.0,10.0"/>
+        </svg>
+      </span>
+    </section>
+
+    <!-- ================= ABOUT / FEATURES ================= -->
+    <section class="section section--tight" id="about">
+      <div class="container">
+        <p class="eyebrow">О нас</p>
+        <h2 class="section-title">Что есть в кофейне</h2>
+        <p class="section-desc">
+          Небольшое уютное место рядом с домом: можно выпить кофе на месте, взять с собой
+          или зайти за свежей выпечкой по дороге.
+        </p>
+        <ul class="features" data-features style="margin-top: 28px;"></ul>
+      </div>
+    </section>
+
+    <!-- ================= MENU / CATALOG ================= -->
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Меню</p>
+          <h2 class="section-title">Кофе, чай и не только</h2>
+          <p class="section-desc">Цены и объёмы — актуальные на сегодня. Состав напитков указан ниже каждой карточки.</p>
+        </div>
+
+        <div class="tabs" data-category-tabs></div>
+        <div class="product-grid" data-product-grid></div>
+        <p class="catalog-empty" data-catalog-empty hidden>В этой категории пока нет напитков.</p>
+      </div>
+    </section>
+
+    <!-- ================= REVIEWS ================= -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Отзывы</p>
+          <h2 class="section-title">Что говорят гости</h2>
+        </div>
+
+        <!--
+          Здесь используется набор реальных отзывов из js/data.js (REVIEWS).
+          Чтобы вместо этого вставить официальный живой виджет отзывов
+          с Яндекс Карт — см. README.md, раздел «Отзывы: подключаем
+          официальный виджет Яндекса». Коротко: просто вставьте
+          полученный от Яндекса <iframe ...> прямо на место блока ниже
+          (.reviews-summary и .review-grid можно удалить или оставить).
+        -->
+        <div class="reviews-summary">
+          <span class="reviews-summary__score" data-rating-value>4.8</span>
+          <div class="reviews-summary__meta">
+            <span data-rating-stars></span>
+            <p data-reviews-count>отзывов</p>
+          </div>
+          <a class="reviews-summary__link" data-yandex-reviews-link href="#" target="_blank" rel="noopener">
+            Все отзывы на Яндекс Картах →
+          </a>
+        </div>
+
+        <div class="review-grid" data-review-grid></div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACTS / MAP ================= -->
+    <section class="section" id="contacts">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Контакты</p>
+          <h2 class="section-title">Как нас найти</h2>
+        </div>
+
+        <div class="contact-layout">
+          <div class="map-frame-wrap">
+            <iframe
+              data-map-frame
+              src="https://yandex.ru/map-widget/v1/?z=17&ol=biz&oid=170474682334"
+              title="Карта: расположение кофейни «Корочка и Мякиш»"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-row">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <div>
+                <h4>Адрес</h4>
+                <p data-address>Санкт-Петербург, Пушкинский район, посёлок Шушары, Школьная улица, 6, корп. 2</p>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h3.5l1.5 4-2 1.3a11 11 0 0 0 5.7 5.7l1.3-2 4 1.5V18a2 2 0 0 1-2.2 2A16 16 0 0 1 3 5.2 2 2 0 0 1 5 4Z"/></svg>
+              <div>
+                <h4>Телефон</h4>
+                <a data-phone-href href="tel:+79319696906"><span data-phone-display>+7 (931) 969-69-06</span></a>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <div>
+                <h4>Часы работы</h4>
+                <p data-hours>Часы работы уточняйте по телефону</p>
+              </div>
+            </div>
+
+            <a class="btn btn--primary" data-route-link href="https://yandex.ru/maps/?rtext=~Санкт-Петербург,%20Пушкинский%20район,%20посёлок%20Шушары,%20Школьная%20улица,%206,%20корп.%202" target="_blank" rel="noopener">Проложить маршрут</a>
+            <a class="btn btn--ghost" data-yandex-org-link href="https://yandex.ru/maps/org/170474682334" target="_blank" rel="noopener">Открыть на Яндекс Картах</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <a class="brand" href="#top">
+          <img class="brand__mark" src="assets/img/logo.png" alt="" />
+          <span class="brand__name">
+            <span data-brand-name>Корочка и Мякиш</span>
+            <small>Пекарня · Кофейня · Шушары</small>
+          </span>
+        </a>
+        <nav class="footer-nav" aria-label="Навигация в подвале">
+          <a href="#about">О нас</a>
+          <a href="#menu">Меню</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span data-year>2026</span> «Корочка и Мякиш». Все права защищены.</p>
+        <p data-address>Санкт-Петербург, посёлок Шушары, Школьная улица, 6, корп. 2</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
