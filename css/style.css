@@ -310,40 +310,7 @@ h2.section-title {
   height: 26px;
 }
 
-@media (max-width: 900px) {
-  .nav-links {
-    position: fixed;
-    inset: 76px 0 0 0;
-    background: var(--bg);
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    padding: 18px 20px 28px;
-    transform: translateY(-8px);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-links a {
-    width: 100%;
-    padding: 13px 4px;
-    font-size: 16px;
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-links .btn {
-    margin-top: 10px;
-    width: 100%;
-  }
-  body.nav-open .nav-links {
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-  }
-  .nav-toggle {
-    display: inline-flex;
-  }
-}
+/* Адаптация под мобильные/планшеты — см. css/responsive.css */
 
 /* ==========================================================
    Hero
@@ -422,7 +389,6 @@ h2.section-title {
   height: 100%;
   display: block;
 }
-
 
 /* ==========================================================
    Features strip
@@ -822,38 +788,6 @@ h2.section-title {
   color: var(--crust);
 }
 
-/* ==========================================================
-   Responsive tweaks
-   ========================================================== */
-@media (max-width: 900px) {
-  .contact-layout {
-    grid-template-columns: 1fr;
-  }
-  .map-frame-wrap,
-  .map-frame-wrap iframe {
-    min-height: 320px;
-  }
-}
-
-@media (max-width: 760px) {
-  .section {
-    padding: 60px 0;
-  }
-  .reviews-summary {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .reviews-summary__link {
-    margin-left: 0;
-  }
-  .contact-layout {
-    grid-template-columns: 1fr;
-  }
-  .map-frame-wrap,
-  .map-frame-wrap iframe {
-    min-height: 240px;
-  }
-  .hero__content {
-    padding: 46px 0 120px;
-  }
-}
+/* Дальнейшая адаптация под мобильные/планшеты (отступы, карта,
+   отзывы и т.д.) — в отдельном файле css/responsive.css, чтобы не
+   смешивать базовые стили с правками под конкретные размеры экрана. */
