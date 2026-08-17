@@ -352,6 +352,9 @@ h2.section-title {
   position: relative;
   padding: 76px 0 0;
   overflow: hidden;
+  min-height: 560px;  
+  display: flex;      
+  align-items: center; 
 }
 .hero__bg {
   position: absolute;
