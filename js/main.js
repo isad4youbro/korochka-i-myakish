@@ -18,6 +18,8 @@
     tea: '<path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Z"/><path d="M17 9.5h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M7 4.5c0 1-1 1-1 2M11 4.5c0 1-1 1-1 2"/>',
     baby: '<circle cx="12" cy="8" r="3.2"/><path d="M4.5 21c0-4.5 3.4-7 7.5-7s7.5 2.5 7.5 7"/><path d="M9.3 8c0-1 .8-2 1.7-2.6M14.7 8c0-1-.8-2-1.7-2.6"/>',
     dog: '<path d="M5 10c0-2.5 1.5-6 3.5-6 1 0 1.3 1 3.5 1s2.5-1 3.5-1c2 0 3.5 3.5 3.5 6 0 4.5-3 8-7 8s-7-3.5-7-8Z"/><circle cx="9.5" cy="11" r=".8" fill="currentColor" stroke="none"/><circle cx="14.5" cy="11" r=".8" fill="currentColor" stroke="none"/><path d="M11 13.5c.3.4.7.4 1 0"/>',
+    wifi: '<path d="M4 9a12 12 0 0 1 16 0"/><path d="M7 12.5a7.5 7.5 0 0 1 10 0"/><path d="M10 16a3.2 3.2 0 0 1 4 0"/><circle cx="12" cy="19" r="1" fill="currentColor" stroke="none"/>',
+    parking: '<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M10 8v8M10 8h2.5a2 2 0 0 1 0 4H10"/>',
     star: '<path d="M12 3.3 14.6 9l6.2.6-4.7 4.1 1.4 6.1L12 16.8 6.5 19.8l1.4-6.1-4.7-4.1L9.4 9 12 3.3Z"/>',
     phone:
       '<path d="M5 4h3.5l1.5 4-2 1.3a11 11 0 0 0 5.7 5.7l1.3-2 4 1.5V18a2 2 0 0 1-2.2 2A16 16 0 0 1 3 5.2 2 2 0 0 1 5 4Z"/>',
@@ -44,13 +46,6 @@
       out += icon("star", i <= Math.round(rating) ? "star--on" : "star--off");
     }
     return `<span class="stars" role="img" aria-label="${rating} из ${max} звёзд">${out}</span>`;
-  }
-
-  function priceRange(sizes) {
-    const prices = sizes.map((s) => s.price);
-    const min = Math.min(...prices);
-    const max = Math.max(...prices);
-    return min === max ? `${min} ₽` : `от ${min} ₽`;
   }
 
   // ----------------------------------------------------------
@@ -97,9 +92,12 @@
 
     const ratingEl = document.querySelector("[data-hero-rating]");
     if (ratingEl) {
+      // Внимание: окончание слова "оценки/оценок" здесь зашито под текущее
+      // число (33). Если поменяете CONFIG.ratingsCount на другое —
+      // проверьте согласование: 1 — оценка, 2–4 — оценки, 5–20 и 0 — оценок.
       ratingEl.innerHTML = `
         ${icon("star", "star--on")}
-        <span><strong>${CONFIG.rating}</strong> · ${CONFIG.ratingsCount} оценок на Яндекс Картах</span>
+        <span><strong>${CONFIG.rating}</strong> · ${CONFIG.ratingsCount} оценки на Яндекс Картах</span>
       `;
     }
   }
@@ -118,16 +116,27 @@
   // ----------------------------------------------------------
   // Каталог
   // ----------------------------------------------------------
+  function sizeLabel(s) {
+    return s.label ? `${s.label} · ${s.volume}` : s.volume;
+  }
+
   function productCardHTML(p) {
-    const sizesHTML = p.sizes
-      .map(
-        (s) => `
-      <li class="size-row">
-        <span class="size-row__label">${s.label !== s.volume ? `${s.label} · ${s.volume}` : s.volume}</span>
-        <span class="size-row__price">${s.price} ₽</span>
-      </li>`
-      )
-      .join("");
+    const hasMultipleSizes = p.sizes.length > 1;
+    const firstPrice = p.sizes[0].price;
+
+    const sizesHTML = hasMultipleSizes
+      ? `<div class="size-switch" role="group" aria-label="Выбор объёма — ${p.name}">
+          ${p.sizes
+            .map(
+              (s, i) => `
+            <button type="button" class="size-switch__btn${i === 0 ? " is-active" : ""}"
+              data-price="${s.price}" aria-pressed="${i === 0}" title="${sizeLabel(s)}">
+              ${s.volume}
+            </button>`
+            )
+            .join("")}
+        </div>`
+      : `<p class="product-card__volume">${sizeLabel(p.sizes[0])}</p>`;
 
     return `
       <article class="product-card" data-category="${p.category}">
@@ -140,10 +149,10 @@
         <div class="product-card__body">
           <div class="product-card__top">
             <h3 class="product-card__name">${p.name}</h3>
-            <span class="product-card__price">${priceRange(p.sizes)}</span>
+            <span class="product-card__price" data-price-display>${firstPrice} ₽</span>
           </div>
           <p class="product-card__tagline">${p.tagline}</p>
-          <ul class="size-list">${sizesHTML}</ul>
+          ${sizesHTML}
           <p class="product-card__composition"><span>Состав:</span> ${p.composition}</p>
         </div>
       </article>`;
@@ -164,11 +173,15 @@
 
     const cards = Array.from(grid.querySelectorAll(".product-card"));
 
+    // Переключение категории — карточки скрываются классом .is-hidden
+    // (а не атрибутом hidden), потому что у .product-card задан свой
+    // display:flex, который иначе перебивал бы hidden по специфичности
+    // CSS-правил и карточки оставались бы видимыми.
     function applyFilter(catId) {
       let visible = 0;
       cards.forEach((card) => {
         const match = catId === "all" || card.dataset.category === catId;
-        card.hidden = !match;
+        card.classList.toggle("is-hidden", !match);
         if (match) visible++;
       });
       if (emptyState) emptyState.hidden = visible !== 0;
@@ -183,6 +196,21 @@
         t.setAttribute("aria-pressed", String(active));
       });
       applyFilter(btn.dataset.cat);
+    });
+
+    // Переключение объёма внутри карточки — обновляет цену наверху карточки
+    grid.addEventListener("click", (e) => {
+      const btn = e.target.closest(".size-switch__btn");
+      if (!btn) return;
+      const card = btn.closest(".product-card");
+      if (!card) return;
+      card.querySelectorAll(".size-switch__btn").forEach((b) => {
+        const active = b === btn;
+        b.classList.toggle("is-active", active);
+        b.setAttribute("aria-pressed", String(active));
+      });
+      const priceEl = card.querySelector("[data-price-display]");
+      if (priceEl) priceEl.textContent = `${btn.dataset.price} ₽`;
     });
 
     applyFilter("all");
@@ -220,8 +248,10 @@
     ).join("");
 
     document.querySelectorAll("[data-rating-value]").forEach((el) => (el.textContent = CONFIG.rating));
+    // Как и в hero-блоке, окончания слов здесь зашиты под текущие числа
+    // (25 отзывов, 33 оценки) — при изменении CONFIG проверьте согласование.
     document.querySelectorAll("[data-reviews-count]").forEach(
-      (el) => (el.textContent = `${CONFIG.reviewsCount} отзывов · ${CONFIG.ratingsCount} оценок`)
+      (el) => (el.textContent = `${CONFIG.reviewsCount} отзывов · ${CONFIG.ratingsCount} оценки`)
     );
     document.querySelectorAll("[data-yandex-reviews-link]").forEach((el) =>
       el.setAttribute("href", CONFIG.yandexReviewsUrl)
@@ -238,14 +268,15 @@
     const map = document.querySelector("[data-map-frame]");
     if (map) map.setAttribute("src", CONFIG.mapEmbedUrl);
 
-    document.querySelectorAll("[data-address]").forEach((el) => (el.textContent = CONFIG.address));
+    const fullAddress = CONFIG.addressNote ? `${CONFIG.address} — ${CONFIG.addressNote}` : CONFIG.address;
+    document.querySelectorAll("[data-address]").forEach((el) => (el.textContent = fullAddress));
     document.querySelectorAll("[data-hours]").forEach((el) => (el.textContent = CONFIG.hours));
     document.querySelectorAll("[data-route-link]").forEach((el) => el.setAttribute("href", CONFIG.yandexRouteUrl));
     document.querySelectorAll("[data-yandex-org-link]").forEach((el) => el.setAttribute("href", CONFIG.yandexOrgUrl));
   }
 
   // ----------------------------------------------------------
-  // Мелочи: год в подвале, плавный скролл, появление секций при скролле
+  // Мелочи: год в подвале
   // ----------------------------------------------------------
   function initMisc() {
     document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
